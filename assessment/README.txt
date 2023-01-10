@@ -3,18 +3,18 @@ Data science and machine learning assessment - Automating Calcium assay data ana
 
 Introduction/motivation
 
-My lab has been sitting on data from a series of calcium signalling experiments for years (since around 2018) 
-that proved too laborious to analyse. Cells were treated with ionomycin which releases ER from the endoplasmic 
-reticulum. This is one of the major intracellular calcium stores along wiht the lysosome. We are interested in is
-the cell's response to the increased cytoplasmic calcium levels, as calcium homeostasis is known to be dysregulated
-in a number of neurodegenerative diseases, which these experements were conducted on (25 disease and 5 wild type 
-cells. The output of these experements is a large number of spreadsheets of calcium levels (as determined by
-fluorescence and microscopy) against time. Each dataset contains data from a number of cells but is restricted to
+My lab has been sitting on data from a series of calcium signalling experiments for years (since around 2018), 
+that proved too laborious to analyse. I these cells were treated with ionomycin which releases ER from the
+endoplasmic reticulum. One of the major intracellular calcium stores along with the lysosome. They were interested
+in the cell's response to the increased cytoplasmic calcium levels, as calcium homeostasis dysregulation is a known
+feature of many neurodegenerative diseases. Experements were carried out on 25 diseases and 5 wild type cell lines.
+The output of these experements is a large number of spreadsheets of calcium levels (as determined by
+fluorescence and microscopy) and a timescale. Each dataset contains data from a number of cells but is restricted to
 one cell type. When plotted, the data has a general pattern as seen in the following link:
 
 https://github.com/U1711/calcium_project/blob/main/assessment/example_plot_annotated.png
 
-The pattern consists of an incline from where ionomycin treatment takes place, a lag period where levels begin to
+Each graph begins with incline due to ionomycin treatment, followed by a lag period where levels begin to
 decline but the cellular response is still generating. This is followed by the primary decline which is what we're
 most interested in, which ends with a slow plateau to a trough.
 
@@ -28,16 +28,16 @@ a specific tolerance then it is added to the line. If the tolerance test fails t
 begins. The longest line throughout the data is then identified. I decided that I could use this to fit a line to
 my primary decline, but it took some modifying.
 
-First I had to define the tolerance, and after trialling a range decided that the consecutive point must not put
-off the gradient of the overall line by a set percentage. After some triall and error I chose 0.3 as this value but
-this can be editied on a cell by cell basis. The second modification was that I ensured that the line was negative,
-to ensure that I identified the decline, not the incline. 
+First I had to define the tolerance, and after trialling a range of different methods I decided that the consecutive
+point must not put off the gradient of the overall line by a set percentage. After some trial and error I chose 0.3
+as this value, but this can be editied on a cell by cell basis. The second modification was that I ensured that the
+line was negative, to ensure that I identified the decline, not the incline. 
 
 Once I started running the code on datasets I noticed that the varying calcium levels between cells caused a large
 amount of differnce in the gradients. To account for this I standardised the calcium level data by dividing each
 cell's values by the peak value in that set. This means that all data was standardised to a 0-1 scale. 
 
-A second function calculates the gradient of the lines plotted in each cell as well as an overall average gradient
+A second function calculates the gradient of the lines plotted in each cell, as well as an overall average gradient
 for the cell type.
 
 
@@ -54,7 +54,7 @@ While I am pleased with the outcome of this project there are some shortcomings 
 further development. As there is no way to verify how well the line fits the primary decline the code must be
 supervised, I would like to develop either a better method to identify the primary decline, or a way to verify the
 accuracy of the line once generated with the method stated above. This would reduce the supervision requirement and
-further decrease the amount of time required to conduct the analysis. A further problem is that while the plots are
+further decrease the amount of time required to conduct the analysis. A further problem is that, while the plots are
 consistent enough to generate a gradient for the primary decline, they do not always span the whole length of the
 decline. If the line more accurately spanned the whole of the primary decline it would be useful to calculate the
 area under the line
@@ -62,8 +62,8 @@ area under the line
 
 To run:
 
-1 - Open automated_calcium_analysis_final_for_assessment file in a jupyter notebook browser.
-	From: https://github.com/U1711/calcium_project/tree/main/assessment
+1 - Open calcium_with_assessment_annotation.ipynb file in a jupyter notebook browser.
+	From: 	From: https://github.com/U1711/calcium_project/tree/main/assessment
 2 - Insert the URL of data to test.
 	Example data - 'https://github.com/U1711/calcium_project/blob/main/assessment/Fucosidosis%20A%2013032018.csv'
 3 - Run through data in order and follow annotations.
