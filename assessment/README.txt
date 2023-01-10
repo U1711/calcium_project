@@ -62,7 +62,7 @@ area under the line
 
 To run:
 
-1 - Open calcium_with_assessment_annotation.ipynb file in a jupyter notebook browser.
+1 - Open automated_calcium_analysis_final_for_assessment file in a jupyter notebook browser.
 2 - Insert the URL of data to test.
 	Example data - 'https://github.com/U1711/calcium_project/blob/main/assessment/Fucosidosis%20A%2013032018.csv'
 3 - Run through data in order and follow annotations.
